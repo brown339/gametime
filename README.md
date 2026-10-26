@@ -61,6 +61,10 @@ I went back and forth between performing logic checks on checkout load vs subscr
 
 If I had more time I would explore the real-time listing subscriptions.
 
+## How AI was used
+
+I leaned on AI to build the UI primarily. Other than that, I used AI to create mock data and for general auto-complete. I handled most of the backend work as well as most functional work (hooks, components functions, models, etc.) I was able to validate the output visually, as it all dealt with UI creation.
+
 ## Other files to look at
 
 `/ASSUMPTIONS.md`
