@@ -1,3 +1,7 @@
+/**
+ * Rename this file to firebaseConfig.ts and update values below.
+ */
+
 export const firebaseConfig = {
   apiKey: 'apiKiy',
   authDomain: 'authDomain',
