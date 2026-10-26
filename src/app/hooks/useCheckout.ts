@@ -113,13 +113,22 @@ export const useCheckout = (sessionId: string) => {
   };
 
   const checkout = async () => {
-    if (!session || !event) return;
+    if (!event || !session) return;
 
     const listing = await fetchListing(session.event.id, session.listing.id);
 
     // Ensure listing is still available
     if (listing.availableSeatsTogether === 0) {
       setAlertId('listing-no-more-seats');
+      return;
+    }
+
+    // Ensure session is still live
+    const updatedSession = await fetchSession();
+
+    // Session expired or was deleted upon successful checkout on another device.
+    if (!updatedSession) {
+      setAlertId('checkout-session-expired');
       return;
     }
 

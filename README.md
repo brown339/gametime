@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# README
 
-## Getting Started
+## What you built and how to run it
 
-First, run the development server:
+I built a checkout flow that handles sessions, price changes, and ticket availability.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## The checkout session state model
+
+```ts
+export interface GTCheckoutSessionRequest {
+  event: GTEvent;
+  listing: GTListing;
+  userId: string;
+}
+
+export interface GTCheckoutSessionResponse {
+  id: string;
+  event: GTEvent;
+  listing: GTListing;
+  userId: string;
+  createdTimestamp: Date;
+  expiresTimestamp: Date;
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How web and mobile resume the same session
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Upon clicking a listing a checkout session is created. The session contains a unique id that can be used to resume. Simply navigate to `/checkout/{sessionId}`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How you handle stale inventory, price changes, or duplicate completion
 
-## Learn More
+Upon checkout page load, we fetch the session given as a url param. With the session, we have access to the event and the selected listing. If the session is no longer valid, the listing no longer has available seats, or the listing has had a price increase or decrease, we alert the user. Upon completing the checkout, we delete the session from the database. This, combined with a session check upon attempting to purchase allows us to avoid duplicate completion.
 
-To learn more about Next.js, take a look at the following resources:
+## What tradeoffs you made
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I went back and forth between performing logic checks on checkout load vs subscribing to changes via websockets for real-time updates on ticket availability, pricing changes, etc. In the end, I went with logic checks on load and on attempt to purchase in order to keep (theoretical) costs down and the development simpler.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What you'd do differently with more time
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If I had more time I would explore the real-time listing subscriptions.

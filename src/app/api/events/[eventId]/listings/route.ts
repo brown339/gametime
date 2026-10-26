@@ -11,7 +11,7 @@ export async function GET(
     const listings = await getDocs(
       `listingsByEventId__${eventId}`,
       'listings',
-      false,
+      true,
       where('eventId', '==', eventId),
     );
 
