@@ -4,6 +4,9 @@
 
 I built a checkout flow that handles sessions, price changes, and ticket availability.
 
+Please visit `https://gametime-backend--gametime-6b6ae.us-east4.hosted.app/events` to see it in action. 
+Note that it will be taken down in two weeks.
+
 ## The checkout session state model
 
 ```ts
