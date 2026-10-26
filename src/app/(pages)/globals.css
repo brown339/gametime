@@ -1,0 +1,100 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #121316;
+  color: #fff;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/*-------- Skeleton loader styles --------*/
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.event-card-skeleton {
+  pointer-events: none;
+}
+
+.skeleton-shimmer {
+  background-color: #22242a;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-line {
+  border-radius: 4px;
+}
+
+.skeleton-name {
+  width: 75%;
+  height: 15px;
+  margin-bottom: 7px;
+}
+
+.skeleton-details {
+  width: 55%;
+  height: 13px;
+  margin-bottom: 9px;
+}
+
+.skeleton-price {
+  width: 35%;
+  height: 14px;
+}
+
+/* EventHeader skeleton helpers */
+.skeleton-header-title {
+  width: 50%;
+  max-width: 420px;
+  height: 28px;
+  margin: 6px 0 8px;
+}
+
+.skeleton-header-subtitle {
+  width: 35%;
+  max-width: 300px;
+  height: 16px;
+}
+
+/* EventListings skeleton helpers */
+.skeleton-listing-subtitle {
+  width: 140px;
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.skeleton-listing-location {
+  width: 220px;
+  height: 22px;
+}
+
+.skeleton-listing-fees {
+  width: 100px;
+  height: 16px;
+  margin-bottom: 6px;
+  margin-left: auto;
+}
+
+.skeleton-listing-amount {
+  width: 70px;
+  height: 22px;
+  margin-left: auto;
+}
+

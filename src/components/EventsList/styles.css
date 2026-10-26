@@ -1,0 +1,75 @@
+.events-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.events-list a {
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #22242a;
+}
+
+.event-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.event-card:hover .event-image img {
+  transform: scale(1.03);
+}
+
+.event-favorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(30, 32, 38, 0.75);
+  color: #fff;
+}
+
+.event-card p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-card .event-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.event-card .event-details {
+  font-size: 13px;
+  color: #9a9ca3;
+  margin-bottom: 6px;
+}
+
+.event-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3ecf8e;
+}

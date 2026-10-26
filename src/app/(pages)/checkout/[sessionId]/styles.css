@@ -1,0 +1,573 @@
+/* The checkout uses a light theme, unlike the rest of the app */
+body:has(.checkout-page) {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.checkout-page {
+  --border: #e3e3e6;
+  --muted: #6b6d73;
+  --text: #1a1a1a;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  color: var(--text);
+}
+
+.checkout-page p,
+.checkout-page h1,
+.checkout-page h2 {
+  margin: 0;
+}
+
+.checkout-page a {
+  color: #4a72c4;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Back link ---------- */
+
+.checkout-page .checkout-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.checkout-page .checkout-back:hover,
+.checkout-page .checkout-back:focus-visible {
+  background: #f5f5f6;
+  color: var(--text);
+}
+
+/* ---------- Contact ---------- */
+
+.checkout-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+}
+
+.checkout-label {
+  font-weight: 600;
+}
+
+/* ---------- Payment ---------- */
+
+.checkout-payment {
+  padding: 22px 0 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.checkout-payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.checkout-payment-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.checkout-secured {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.payment-option {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+
+.payment-option:has(input[type='radio']:checked) {
+  border-color: #1a1a1a;
+}
+
+.payment-option-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  cursor: pointer;
+}
+
+.payment-option-row input[type='radio'] {
+  appearance: none;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 1.5px solid #9a9ca3;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.payment-option-row input[type='radio']:checked {
+  border: 6px solid #1a1a1a;
+}
+
+.payment-option-row input[type='radio']:focus-visible {
+  outline: 2px solid #4a72c4;
+  outline-offset: 2px;
+}
+
+.payment-option-name {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.payment-option-icon {
+  flex-shrink: 0;
+}
+
+.payment-option-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid #9a9ca3;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.payment-option-badge--square {
+  padding: 4px 9px;
+  border-color: var(--border);
+  border-radius: 2px;
+}
+
+.paypal-mark {
+  color: #1d3c8f;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 800;
+}
+
+/* Card fields */
+
+.payment-option--card .payment-option-row {
+  border-bottom: 1px solid var(--border);
+}
+
+.card-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 12px;
+}
+
+.card-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.card-field:focus-within {
+  border-color: #9a9ca3;
+}
+
+.card-field--number {
+  grid-column: 1 / -1;
+}
+
+.card-field input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+}
+
+.card-field input::placeholder {
+  color: #8a8c92;
+}
+
+.card-brands {
+  display: flex;
+  gap: 4px;
+}
+
+.card-brand {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 14px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 5px;
+  font-weight: 800;
+}
+
+.card-brand--visa {
+  background: #1a1f71;
+}
+
+.card-brand--amex {
+  background: #2e77bb;
+}
+
+.card-brand--discover {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: #e1641f;
+  font-size: 3.5px;
+}
+
+.card-brand--mc {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.card-brand--mc span {
+  width: 10px;
+  height: 10px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: #eb001b;
+}
+
+.card-brand--mc span + span {
+  margin-left: -4px;
+  background: #f79e1b;
+  opacity: 0.9;
+}
+
+/* Logos */
+
+.gpay-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  font-weight: 500;
+}
+
+.g-blue {
+  font-weight: 700;
+  background: conic-gradient(
+    from -45deg,
+    #ea4335 0 25%,
+    #4285f4 0 50%,
+    #34a853 0 75%,
+    #fbbc05 0
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.paypal-logo {
+  font-style: italic;
+  font-weight: 800;
+}
+
+/* ---------- Footer / buy button ---------- */
+
+.checkout-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.checkout-terms {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  text-align: center;
+}
+
+.checkout-footer-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 8px 14px 20px;
+}
+
+.checkout-footer-amount {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.checkout-footer-caption {
+  color: #8a8c92;
+  font-size: 14px;
+}
+
+.buy-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+  border: none;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  background: #000;
+}
+
+.buy-label {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.buy-label .gpay-logo {
+  font-size: 22px;
+}
+
+/* Show the button label that matches the selected payment method */
+.checkout-page:has(input[value='card']:checked) .buy-label--card,
+.checkout-page:has(input[value='google-pay']:checked) .buy-label--google-pay,
+.checkout-page:has(input[value='paypal']:checked) .buy-label--paypal {
+  display: inline-flex;
+}
+
+/* ---------- Summary ---------- */
+
+.checkout-summary {
+  /* Leave room for the fixed footer on mobile */
+  padding: 28px 0 200px;
+}
+
+.seat-map {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #1c1d21;
+}
+
+.seat-map img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 21 / 10;
+  object-fit: cover;
+}
+
+.seat-map-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.seat-map-controls button {
+  width: 30px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.seat-map-controls button:first-child {
+  color: #9a9ca3;
+}
+
+.checkout-summary .summary-venue {
+  margin-top: 16px;
+  color: #8a8c92;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.checkout-summary .summary-name {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.summary-date {
+  font-size: 13px;
+}
+
+.checkout-summary .summary-alert {
+  margin: 28px 0 8px;
+  padding: 4px;
+  background: #fdf3cf;
+  font-size: 12px;
+  text-align: center;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.summary-muted {
+  color: #8a8c92;
+}
+
+.checkout-page .summary-promo {
+  display: inline-block;
+  margin: 4px 0 6px;
+  color: #8a8c92;
+  font-size: 13px;
+}
+
+.summary-total {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summary-details li {
+  display: flex;
+  gap: 16px;
+}
+
+.summary-details svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.summary-detail-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.summary-detail-sub {
+  font-size: 13px;
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 768px) {
+  /* Light grey right half that extends to the edge of the viewport */
+  body:has(.checkout-page) {
+    background: linear-gradient(to right, #fff 50%, #f5f5f6 50%);
+  }
+
+  .checkout-page {
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 40px);
+  }
+
+  .checkout-main {
+    padding-right: 38px;
+  }
+
+  .checkout-contact {
+    border-bottom: none;
+    font-size: 13px;
+  }
+
+  .checkout-payment-header h2 {
+    font-size: 18px;
+  }
+
+  .checkout-secured {
+    font-size: 9px;
+  }
+
+  .payment-option-name {
+    font-size: 14px;
+  }
+
+  .checkout-footer {
+    position: static;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .checkout-terms {
+    padding: 14px 0 18px;
+    border-bottom: none;
+    font-size: 11px;
+  }
+
+  .checkout-footer-bar {
+    padding: 0;
+  }
+
+  .checkout-footer-total {
+    display: none;
+  }
+
+  .buy-button {
+    min-height: 38px;
+    font-size: 14px;
+  }
+
+  .buy-label .gpay-logo {
+    font-size: 18px;
+  }
+
+  .checkout-summary {
+    max-width: 340px;
+    padding: 10px 0 40px 32px;
+  }
+}

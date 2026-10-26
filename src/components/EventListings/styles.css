@@ -1,0 +1,183 @@
+.listings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #3a3940;
+}
+
+.listing {
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  padding: 18px 12px;
+  background: #2a2930;
+  border-bottom: 2px solid #3a3940;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.listing:hover,
+.listing:focus-visible {
+  background: #33323a;
+}
+
+.listing-image {
+  position: relative;
+  flex: 0 0 auto;
+  width: 480px;
+  max-width: 50%;
+  aspect-ratio: 8 / 3;
+  overflow: hidden;
+  background: #111;
+}
+
+.listing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.listing-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  background: #ee4c6c;
+  color: #1f1e24;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.listing-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.listing-info p {
+  margin: 0;
+}
+
+.listing-subtitle {
+  color: #a9a8ae;
+  font-size: 20px;
+}
+
+.listing-location {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.listing-price {
+  text-align: right;
+}
+
+.listing-fees {
+  color: #a9a8ae;
+  font-size: 19px;
+}
+
+.listing-amount {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.listing-unit {
+  margin-left: 2px;
+  color: #a9a8ae;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Mobile: full-bleed image cards with details overlaid */
+@media (max-width: 640px) {
+  .listings {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 0 12px;
+    border-top: none;
+  }
+
+  .listing {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 1;
+    min-height: 200px;
+    padding: 0;
+    border: 1px solid #3a3940;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .listing-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+  }
+
+  .listing-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 35%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+  }
+
+  .listing-badge {
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+  }
+
+  .listing-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 0 24px 22px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .listing-info > div:first-child {
+    min-width: 0;
+  }
+
+  .listing-subtitle,
+  .listing-fees {
+    font-size: 17px;
+    color: #c9c8ce;
+  }
+
+  .listing-location,
+  .listing-amount {
+    font-size: 22px;
+  }
+
+  .listing-location {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .listing-price {
+    flex-shrink: 0;
+  }
+}
